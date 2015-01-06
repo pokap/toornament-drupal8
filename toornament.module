@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Field hooks to implement a simple toornament field.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function toornament_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.toornament':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Toornament module provider.') . '</p>';
+      return $output;
+    }
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function toornament_theme() {
+  return array(
+    'toornament_widget' => array(
+      'variables' => array('tournamentId' => NULL, 'attributes' => array()),
+    ),
+  );
+}
+
+/**
+ * Prepares variables for toornament widget templates.
+ */
+function template_preprocess_toornament_widget(array &$variables) {
+  $variables['width'] = 560;
+  $variables['height'] = 315;
+  $variables['src'] = sprintf('http://www.toornament.com/widget/tournaments/%s/navigator', $variables['tournamentId']);
+}

@@ -1,0 +1,17 @@
+# Schema for the configuration files of the Toornament module.
+
+field.storage_settings.toornament:
+  label: 'Toornament settings'
+  type: mapping
+
+field.field_settings.toornament:
+  label: 'Toornament settings'
+  type: mapping
+
+field.value.toornament:
+  type: mapping
+  label: 'Default value'
+  mapping:
+    value:
+      type: label
+      label: 'Value'
